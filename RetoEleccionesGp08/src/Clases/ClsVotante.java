@@ -8,7 +8,7 @@ package Clases;
  *
  * @author arena
  */
-public class ClsVotante extends ClsPersona{
+public class ClsVotante extends ClsPersonas{
     private String correoElectronico;
 
     public ClsVotante(String correoElectronico, String tipoDocumento, String numeroDocumento, String nombre, String telefono) {
