@@ -4,6 +4,8 @@
  */
 package retoeleccionesgp08;
 
+import Clases.ClsJdbc;
+
 /**
  *
  * @author arena
@@ -15,6 +17,8 @@ public class RetoEleccionesGp08 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ClsJdbc jdbc = new ClsJdbc();
+        jdbc.CrearConnexion();
     }
     
 }
