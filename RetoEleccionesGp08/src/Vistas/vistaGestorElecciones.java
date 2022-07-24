@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import Clases.ClsEleccion;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author EQUIPO
@@ -258,7 +261,18 @@ public class vistaGestorElecciones extends javax.swing.JFrame {
     }//GEN-LAST:event_campoNombreActionPerformed
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
-        // TODO add your handling code here:
+        
+        String nombre = this.campoNombre.getText();
+        String categoria = this.comboCategoria.getSelectedItem().toString();
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaInicio = formato.format(this.campoFechaInicio.getDate());
+        String fechaFin = formato.format(this.campoFechaFin.getDate());
+
+        String[] arrayFecha = fechaInicio.split("-");
+        String idEleccion = arrayFecha[0] + "-" + categoria;
+        
+        ClsEleccion eleccion = new ClsEleccion(idEleccion, nombre, fechaInicio, fechaFin, categoria);
+        
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
