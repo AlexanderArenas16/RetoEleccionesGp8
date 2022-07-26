@@ -4,10 +4,29 @@
  */
 package Controladores;
 
+import Clases. *;
+import Modelos.MdlVotante;
+import java.util.LinkedList;
+
 /**
  *
  * @author arena
  */
 public class CtlVotante {
+    MdlVotante modeloVotante = new MdlVotante();
     
+    public LinkedList<ClsVotante>obtenerVotante(){
+        
+        return this.modeloVotante.ObtenerVotantes();
+    }
+    
+    public ClsMensaje agregarVotante(ClsVotante votante){
+
+        return this.modeloVotante.agregarVotante(votante);
+    }
+    
+    public ClsMensaje eliminarVotante(String id){
+        
+        return this.modeloVotante.eliminarVotante(id);
+    }
 }
