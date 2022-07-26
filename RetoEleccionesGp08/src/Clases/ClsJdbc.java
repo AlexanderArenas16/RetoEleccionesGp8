@@ -5,8 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 
- * @author arena
- */
+ 
 public class ClsJdbc {
     
     String driver = "com.mysql.cj.jdbc.Driver";
@@ -28,6 +27,10 @@ public class ClsJdbc {
         }catch(Exception error){
             System.out.println("Ocuriro error en la conexión " + error.getMessage());
         } 
+    }
+
+    public void CrearConexion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 
