@@ -4,16 +4,19 @@
  */
 package Clases;
 
-/**
- *
- * @author EQUIPO
- */
+
+
+import javax.swing.JOptionPane;
+
+
+
 public class ClsMensaje {
     
     public final static String OK = "OK";
     public final static String ERROR = "ERROR";
     public final static String ADVERTENCIA = "ADVERTENCIA";
     
+
     private String tipo;
     private String texto;
 
@@ -29,4 +32,12 @@ public class ClsMensaje {
     public String getTexto() {
         return texto;
     }
+
+    public void mostrarMensaje() {
+
+        JOptionPane.showMessageDialog(null, this.getTexto());
+
+    }
+    
+
 }

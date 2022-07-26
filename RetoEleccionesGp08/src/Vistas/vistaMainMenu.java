@@ -1,4 +1,3 @@
-
 package Vistas;
 
 /**
@@ -7,20 +6,16 @@ package Vistas;
  */
 public class vistaMainMenu extends javax.swing.JFrame {
 
-    
-    
-    vistaCandidato vistaCandidato;
-    
-    
+    vistaCandidato vistaGestorCandidato;
+
     /**
      * Creates new form vistaMainMenu
      */
     public vistaMainMenu() {
         initComponents();
-        
-        
-        
-        
+
+        this.vistaGestorCandidato = new vistaCandidato(this);
+
     }
 
     /**
@@ -34,7 +29,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        botonGestorCandidato = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -43,10 +38,10 @@ public class vistaMainMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("Sistema de Elecciones");
 
-        jButton1.setText("Gestor Candidato");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonGestorCandidato.setText("Gestor Candidato");
+        botonGestorCandidato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonGestorCandidatoActionPerformed(evt);
             }
         });
 
@@ -74,7 +69,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jButton1)
+                .addComponent(botonGestorCandidato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(45, 45, 45))
@@ -84,7 +79,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(botonGestorCandidato)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jButton3)
@@ -117,9 +112,11 @@ public class vistaMainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botonGestorCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestorCandidatoActionPerformed
+        
+        this.setVisible(false);
+        this.vistaGestorCandidato.setVisible(true);
+    }//GEN-LAST:event_botonGestorCandidatoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -129,14 +126,12 @@ public class vistaMainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    
-    private void ButtonCandidateManagerActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+    private void ButtonCandidateManagerActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        
-        this.vistaCandidato.setVisible(true);
-    }                                         
-    
-    
+
+        this.vistaGestorCandidato.setVisible(true);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -173,7 +168,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botonGestorCandidato;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
