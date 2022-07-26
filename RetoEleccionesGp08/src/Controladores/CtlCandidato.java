@@ -4,6 +4,7 @@
  */
 package Controladores;
 
+
 import Clases.ClsCandidato;
 import Clases.ClsMensaje;
 import Modelos.MdlCandidato;
@@ -49,5 +50,3 @@ public class CtlCandidato {
 
         return mensaje;
     }
-
-}

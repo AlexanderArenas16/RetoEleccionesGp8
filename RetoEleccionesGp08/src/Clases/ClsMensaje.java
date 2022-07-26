@@ -5,17 +5,17 @@
 package Clases;
 
 
+
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author orlandoacevedo
- */
+
+
 public class ClsMensaje {
     
     public final static String OK = "OK";
-    public static final String ERROR = "ERROR";
+    public final static String ERROR = "ERROR";
     public final static String ADVERTENCIA = "ADVERTENCIA";
+    
 
     private String tipo;
     private String texto;
@@ -32,10 +32,12 @@ public class ClsMensaje {
     public String getTexto() {
         return texto;
     }
+
     public void mostrarMensaje() {
 
         JOptionPane.showMessageDialog(null, this.getTexto());
 
     }
     
+
 }
