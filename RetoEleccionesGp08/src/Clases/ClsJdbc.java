@@ -17,7 +17,7 @@ public class ClsJdbc {
     
     public Connection conexion;
     
-    public void CrearConnexion() {
+    public void CrearConexion() {
         try {
             Class.forName(driver);
             this.conexion =  DriverManager.getConnection(url, usuario, contrasenia);
