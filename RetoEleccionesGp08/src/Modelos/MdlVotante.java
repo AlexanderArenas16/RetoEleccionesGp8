@@ -19,7 +19,7 @@ public class MdlVotante {
 
     public MdlVotante() {
         this.jdbc = new ClsJdbc();
-        this.jdbc.CrearConnexion();
+        this.jdbc.CrearConexion();
     }
     
     public LinkedList<ClsVotante>ObtenerVotantes(){

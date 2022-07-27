@@ -34,7 +34,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         botonGestorCandidato = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonGestorVotante = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,10 +49,10 @@ public class vistaMainMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Gestor Votante");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonGestorVotante.setText("Gestor Votante");
+        botonGestorVotante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonGestorVotanteActionPerformed(evt);
             }
         });
 
@@ -75,7 +75,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(botonGestorCandidato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(botonGestorVotante)
                 .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,7 +84,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonGestorCandidato)
-                    .addComponent(jButton2))
+                    .addComponent(botonGestorVotante))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(48, 48, 48))
@@ -122,9 +122,11 @@ public class vistaMainMenu extends javax.swing.JFrame {
         this.vistaCandidato.setVisible(true);
     }//GEN-LAST:event_botonGestorCandidatoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botonGestorVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestorVotanteActionPerformed
+        
+        this.setVisible(false);
+        this.vistaCandidato.setVisible(true);
+    }//GEN-LAST:event_botonGestorVotanteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -175,7 +177,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGestorCandidato;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botonGestorVotante;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

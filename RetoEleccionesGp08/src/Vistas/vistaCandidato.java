@@ -37,7 +37,7 @@ public class vistaCandidato extends javax.swing.JFrame {
         this.botonNuevo.setVisible(false);
         this.botonActualizar.setVisible(false);
 
-        //this.ObtenerCandidatos();
+//        this.ObtenerCandidatos();
     }
 
     /**

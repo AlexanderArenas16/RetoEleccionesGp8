@@ -18,7 +18,7 @@ public class MdlCandidato {
     public MdlCandidato() {
         
         this.jdbc = new ClsJdbc();
-        this.jdbc.CrearConnexion();
+        this.jdbc.CrearConexion();
     }
     
     public ClsMensaje eliminarCandidato(String id) {
