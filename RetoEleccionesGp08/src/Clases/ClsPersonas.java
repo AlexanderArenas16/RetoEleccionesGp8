@@ -13,6 +13,16 @@ public class ClsPersonas {
     private String numeroDocumento;
     private String nombre;
     private String telefono;
+    private String direccion;
+
+    public ClsPersonas(String tipoDocumento, String numeroDocumento, String nombre, String telefono, String direccion) {
+        this.tipoDocumento = tipoDocumento;
+        this.numeroDocumento = numeroDocumento;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
+
 
     public ClsPersonas(String tipoDocumento, String numeroDocumento, String nombre, String telefono) {
         this.tipoDocumento = tipoDocumento;
@@ -51,5 +61,13 @@ public class ClsPersonas {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }

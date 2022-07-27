@@ -19,10 +19,7 @@ public class RetoEleccionesGp08 {
     public static void main(String[] args) {
         // TODO code application logic here
         ClsJdbc jdbc = new ClsJdbc();
-        jdbc.CrearConnexion();
-        
-        vistaGestorElecciones vista = new vistaGestorElecciones();
-        vista.setVisible(true);
+        jdbc.CrearConexion();
     }
     
 }

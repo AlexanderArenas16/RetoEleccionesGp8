@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package Vistas;
 
 /**
@@ -7,20 +10,16 @@ package Vistas;
  */
 public class vistaMainMenu extends javax.swing.JFrame {
 
-    
-    
     vistaCandidato vistaCandidato;
-    
-    
+
     /**
      * Creates new form vistaMainMenu
      */
     public vistaMainMenu() {
         initComponents();
-        
-        
-        
-        
+
+        this.vistaCandidato = new vistaCandidato(this);
+
     }
 
     /**
@@ -34,8 +33,8 @@ public class vistaMainMenu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonGestorCandidato = new javax.swing.JButton();
+        botonGestorVotante = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,17 +42,17 @@ public class vistaMainMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("Sistema de Elecciones");
 
-        jButton1.setText("Gestor Candidato");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonGestorCandidato.setText("Gestor Candidato");
+        botonGestorCandidato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonGestorCandidatoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Gestor Votante");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonGestorVotante.setText("Gestor Votante");
+        botonGestorVotante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonGestorVotanteActionPerformed(evt);
             }
         });
 
@@ -74,9 +73,9 @@ public class vistaMainMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jButton1)
+                .addComponent(botonGestorCandidato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(botonGestorVotante)
                 .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,8 +83,8 @@ public class vistaMainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(botonGestorCandidato)
+                    .addComponent(botonGestorVotante))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(48, 48, 48))
@@ -117,29 +116,32 @@ public class vistaMainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botonGestorCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestorCandidatoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        this.vistaCandidato.setVisible(true);
+    }//GEN-LAST:event_botonGestorCandidatoActionPerformed
+
+    private void botonGestorVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestorVotanteActionPerformed
+        
+        this.setVisible(false);
+        this.vistaCandidato.setVisible(true);
+    }//GEN-LAST:event_botonGestorVotanteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    
-    private void ButtonCandidateManagerActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+    /** private void ButtonCandidateManagerActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+
+        this.vistaGestorCandidato.setVisible(true);
         
-        this.vistaCandidato.setVisible(true);
-    }                                         
-    
-    
-    /**
-     * @param args the command line arguments
-     */
+    }
+    * */
+        /**
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -168,13 +170,14 @@ public class vistaMainMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new vistaMainMenu().setVisible(true);
+               
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botonGestorCandidato;
+    private javax.swing.JButton botonGestorVotante;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

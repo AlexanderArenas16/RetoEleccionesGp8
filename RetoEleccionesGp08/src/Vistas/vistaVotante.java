@@ -4,17 +4,26 @@
  */
 package Vistas;
 
+import Clases.*;
+import Controladores.CtlVotante;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author arena
  */
 public class vistaVotante extends javax.swing.JFrame {
 
+    CtlVotante controladorVotante;
     /**
      * Creates new form vistaVotante
      */
     public vistaVotante() {
+        this.controladorVotante = new CtlVotante();
         initComponents();
+        this.obtenerVotantes();
     }
 
     /**
@@ -27,24 +36,27 @@ public class vistaVotante extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        botonEliminarVotante = new javax.swing.JButton();
+        panelListaVotante = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaVotante = new javax.swing.JTable();
+        botonEliminarVotantes = new javax.swing.JButton();
+        botonEditarVotante = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        campoCedulaVotante = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        campoTelefonoVotante = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        campoNombreVotante = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        campoDireccionVotante = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        campoCorreoVotante = new javax.swing.JTextField();
+        botonAgregarVotante = new javax.swing.JButton();
+        botonLimpiarCamposVotante = new javax.swing.JButton();
+        botonActualizarVotante = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -57,10 +69,17 @@ public class vistaVotante extends javax.swing.JFrame {
             .addGap(0, 257, Short.MAX_VALUE)
         );
 
+        botonEliminarVotante.setText("Eliminar");
+        botonEliminarVotante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarVotanteActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaVotante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -79,24 +98,50 @@ public class vistaVotante extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaVotante);
+
+        botonEliminarVotantes.setText("Eliminar");
+        botonEliminarVotantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarVotantesActionPerformed(evt);
+            }
+        });
+
+        botonEditarVotante.setText("Editar");
+        botonEditarVotante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEditarVotante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEditarVotanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botonEditarVotante)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonEliminarVotantes)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonEliminarVotantes)
+                    .addComponent(botonEditarVotante))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Lista Votantes", jPanel2);
+        panelListaVotante.addTab("Lista Votantes", jPanel2);
 
         jLabel1.setText("ID (cedula):");
 
@@ -104,9 +149,9 @@ public class vistaVotante extends javax.swing.JFrame {
 
         jLabel3.setText("Nombre:");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        campoNombreVotante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                campoNombreVotanteActionPerformed(evt);
             }
         });
 
@@ -114,24 +159,23 @@ public class vistaVotante extends javax.swing.JFrame {
 
         jLabel5.setText("Correo Electronico:");
 
-        jButton1.setText("Agregar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonAgregarVotante.setText("Agregar");
+        botonAgregarVotante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAgregarVotante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonAgregarVotanteActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Editar");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jButton3.setText("Limpiar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonLimpiarCamposVotante.setText("Limpiar");
+        botonLimpiarCamposVotante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonLimpiarCamposVotante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonLimpiarCamposVotanteActionPerformed(evt);
             }
         });
+
+        botonActualizarVotante.setText("Actualizar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -140,16 +184,16 @@ public class vistaVotante extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5)
+                    .addComponent(campoNombreVotante)
+                    .addComponent(campoDireccionVotante)
+                    .addComponent(campoCorreoVotante)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                            .addComponent(campoCedulaVotante, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 26, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoTelefonoVotante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,11 +202,11 @@ public class vistaVotante extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(botonAgregarVotante)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(botonLimpiarCamposVotante)
+                        .addGap(7, 7, 7)
+                        .addComponent(botonActualizarVotante)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -174,29 +218,29 @@ public class vistaVotante extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoCedulaVotante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoTelefonoVotante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoNombreVotante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoDireccionVotante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(campoCorreoVotante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(botonAgregarVotante)
+                    .addComponent(botonLimpiarCamposVotante)
+                    .addComponent(botonActualizarVotante))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Agregar Votante", jPanel3);
+        panelListaVotante.addTab("Agregar Votante", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,32 +248,98 @@ public class vistaVotante extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(panelListaVotante)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(panelListaVotante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void campoNombreVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreVotanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_campoNombreVotanteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonAgregarVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarVotanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String cedula = this.campoCedulaVotante.getText();
+        String correo = this.campoCorreoVotante.getText();
+        String direccion = this.campoDireccionVotante.getText();
+        String nombre = this.campoNombreVotante.getText();
+        String telefono = this.campoTelefonoVotante.getText();
+        String tipoDocumento = "C.C";
+        
+        ClsVotante votante = new ClsVotante(correo, tipoDocumento, cedula, nombre, telefono, direccion);
+        
+        ClsMensaje mensaje = this.controladorVotante.agregarVotante(votante);
+        
+        if(mensaje.getTipo().equals(ClsMensaje.OK)){
+            this.obtenerVotantes();
+            this.limpiarCampos();
+            JOptionPane.showMessageDialog(rootPane, mensaje.getTexto()); 
+        }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+    }//GEN-LAST:event_botonAgregarVotanteActionPerformed
+
+    private void botonLimpiarCamposVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarCamposVotanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        this.limpiarCampos();
+    }//GEN-LAST:event_botonLimpiarCamposVotanteActionPerformed
 
+    private void botonEliminarVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarVotanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEliminarVotanteActionPerformed
+
+    private void botonEliminarVotantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarVotantesActionPerformed
+        
+        int columna = 0;
+        int fila = this.tablaVotante.getSelectedRow();
+        
+        String id = this.tablaVotante.getValueAt(fila, columna).toString();
+        
+        ClsMensaje mensaje = this.controladorVotante.eliminarVotante(id);
+        
+        if(mensaje.getTipo().equals(ClsMensaje.OK)){
+            this.obtenerVotantes();
+            JOptionPane.showMessageDialog(rootPane, mensaje.getTexto()); 
+        }
+    }//GEN-LAST:event_botonEliminarVotantesActionPerformed
+
+    private void botonEditarVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarVotanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonEditarVotanteActionPerformed
+
+    public void obtenerVotantes() {
+        LinkedList<ClsVotante> listaVotantes = this.controladorVotante.obtenerVotante();
+        this.actualizarTabla(listaVotantes);
+    }
+    
+    public void actualizarTabla(LinkedList<ClsVotante> votantes){
+        DefaultTableModel modelo = (DefaultTableModel) this.tablaVotante.getModel();
+        modelo.setRowCount(0);
+        
+        for(ClsVotante v : votantes) {
+            Object[] fila = { v.getNumeroDocumento(), v.getNombre(), v.getTelefono(), v.getCorreoElectronico() };
+            
+            modelo.addRow(fila);
+        }
+    }
+    
+    public void limpiarCampos() {
+        this.campoCedulaVotante.setText("");
+        this.campoCorreoVotante.setText("");
+        this.campoDireccionVotante.setText("");
+        this.campoNombreVotante.setText("");
+        this.campoTelefonoVotante.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -266,9 +376,17 @@ public class vistaVotante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton botonActualizarVotante;
+    private javax.swing.JButton botonAgregarVotante;
+    private javax.swing.JButton botonEditarVotante;
+    private javax.swing.JButton botonEliminarVotante;
+    private javax.swing.JButton botonEliminarVotantes;
+    private javax.swing.JButton botonLimpiarCamposVotante;
+    private javax.swing.JTextField campoCedulaVotante;
+    private javax.swing.JTextField campoCorreoVotante;
+    private javax.swing.JTextField campoDireccionVotante;
+    private javax.swing.JTextField campoNombreVotante;
+    private javax.swing.JTextField campoTelefonoVotante;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -278,12 +396,7 @@ public class vistaVotante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTabbedPane panelListaVotante;
+    private javax.swing.JTable tablaVotante;
     // End of variables declaration//GEN-END:variables
 }
