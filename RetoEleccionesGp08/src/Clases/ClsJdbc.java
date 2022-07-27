@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 
- 
 public class ClsJdbc {
     
     String driver = "com.mysql.cj.jdbc.Driver";
