@@ -20,9 +20,13 @@ public class CtlEleccion {
         this.modelo = new MdlEleccion();
     }
     
-    public ClsMensaje agregareEleccion (ClsEleccion eleccion){
+    public ClsMensaje agregarEleccion (ClsEleccion eleccion){
         
         return this.modelo.agregarEleccion(eleccion);
     }
+    
+//    public LinkedList<ClsEleccion> ObtenerElecciones(){
+//        
+//    }
     
 }

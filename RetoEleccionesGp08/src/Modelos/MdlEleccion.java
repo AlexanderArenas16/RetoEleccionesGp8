@@ -8,6 +8,7 @@ import Clases.ClsEleccion;
 import Clases.ClsJdbc;
 import Clases.ClsMensaje;
 import java.sql.PreparedStatement;
+import java.util.LinkedList;
 
 /**
  *
@@ -27,7 +28,7 @@ public class MdlEleccion {
         ClsMensaje mensaje;
         
         try{
-            String sql = "INSERT INTO tbl_elecciones (?, ?, ?, ?, ?, NOW())";
+            String sql = "INSERT INTO tbl_elecciones VALUES (?, ?, ?, ?, ?, NOW(), 'abierta')";
             PreparedStatement sentencia = this.jdbc.conexion.prepareStatement(sql);
             sentencia.setString(1, eleccion.getIdEleccion());
             sentencia.setString(2, eleccion.getDescripcion());
@@ -49,5 +50,33 @@ public class MdlEleccion {
         }
         
     }
+    
+    
+//    public LinkedList <ClsEleccion> obtenerElecciones(){
+//        
+//        try {
+//            LinkedList<ClsEleccion> lista = new LinkedList<>();
+//            
+//            String consulta = "SELECT * FROM tbl_elecciones";
+//            PreparedStatement sentencia = this.jdbc.conexion.prepareStatement(consulta);
+//            ResultSet resultados = sentencia.executeQuery();
+//            
+//            while (resultados.next()){
+//                
+//                String idEleccion = resultados.getString("id_eleccion");
+//                String descripcion = resultados.getString("descripcion");
+//                String categoria = resultados.getString("categoria");
+//                String fechaInicio = resultados.getString("fecha_inicio");
+//                String fechaFin = resultados.getString("fecha_fin");
+//                String estado = resultados.getString("estado");
+//                
+//                ClsEleccion eleccion = new ClsEleccion(idEleccion, descripcion, fechaInicio, fechaFin, categoria);
+//                
+//                eleccion.setEstado(estado);
+//            }
+//            return
+//            
+//        }
+//    }
     
 }
