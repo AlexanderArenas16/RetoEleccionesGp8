@@ -1,6 +1,8 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package Vistas;
-
 
 import Clases.ClsCandidato;
 import Clases.ClsMensaje;
@@ -9,6 +11,7 @@ import java.util.LinkedList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author orlandoacevedo
@@ -18,32 +21,25 @@ public class vistaCandidato extends javax.swing.JFrame {
     JFrame menuPrincipal;
     CtlCandidato controladorCandidato;
     LinkedList<ClsCandidato> listaCandidatos;
-    
+
     /**
      * Creates new form vistaCandidato
      */
     public vistaCandidato(JFrame menuPrincipal) {
         initComponents();
-        
-        this.menuPrincipal = menuPrincipal;
+
+        if (menuPrincipal != null) {
+            this.menuPrincipal = menuPrincipal;
+
+        }
         this.controladorCandidato = new CtlCandidato();
 
         this.botonNuevo.setVisible(false);
         this.botonActualizar.setVisible(false);
 
-        this.ObtenerCandidatos();
-        
+        //this.ObtenerCandidatos();
     }
 
-    vistaCandidato(vistaMainMenu aThis) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    private vistaCandidato() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -373,155 +369,16 @@ public class vistaCandidato extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
-        
+
         this.setVisible(false);
         this.menuPrincipal.setVisible(true);
-        
+
     }//GEN-LAST:event_botonVolverActionPerformed
 
     private void campoCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCedulaActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_campoCedulaActionPerformed
-
-    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoNombreActionPerformed
-
-    private void campoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCorreoActionPerformed
-
-    private void campoTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoTelefonoActionPerformed
-
-    private void comboCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCiudadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboCiudadActionPerformed
-
-    private void campoDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoDireccionActionPerformed
-
-    private void comboPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPartidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboPartidoActionPerformed
-
-    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
-        
-        String numeroCedula = this.campoCedula.getText();
-        String nombre = this.campoNombre.getText();
-        String correo = this.campoCorreo.getText();
-        String telefono = this.campoTelefono.getText();
-        String ciudadOrigen = this.comboCiudad.getSelectedItem().toString();
-        String direccion = this.campoDireccion.getText();
-        String partidoPolitico = this.comboPartido.getSelectedItem().toString();
-        String mensajeCampania = this.areaCampania.getText();
-        String descripcion = this.areaDescripcion.getText();
-
-        ClsCandidato candidato = new ClsCandidato(partidoPolitico, mensajeCampania, descripcion,
-                numeroCedula, nombre, correo, telefono, ciudadOrigen, direccion
-        );
-
-        ClsMensaje mensaje = this.controladorCandidato.agregarCandidato(candidato);
-
-        if (mensaje.getTipo().equals(ClsMensaje.OK)) {
-            ObtenerCandidatos();
-        }
-
-        JOptionPane.showMessageDialog(rootPane, mensaje.getTexto());  
-        
-        
-    }//GEN-LAST:event_botonAgregarActionPerformed
-
-    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
-        
-        this.botonAgregar.setVisible(true);
-        this.botonActualizar.setVisible(false);
-        this.botonNuevo.setVisible(false);
-
-        this.campoCedula.setEnabled(true);
-        this.campoCedula.setText("");
-        this.campoNombre.setText("");
-        this.campoCorreo.setText("");
-        this.campoTelefono.setText("");
-        this.campoDireccion.setText("");
-        this.areaCampania.setText("");
-        this.areaDescripcion.setText("");
-        
-    }//GEN-LAST:event_botonNuevoActionPerformed
-
-    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
-        
-        String numeroCedula = this.campoCedula.getText();
-        String nombre = this.campoNombre.getText();
-        String correo = this.campoCorreo.getText();
-        String telefono = this.campoTelefono.getText();
-        String ciudadOrigen = this.comboCiudad.getSelectedItem().toString();
-        String direccion = this.campoDireccion.getText();
-        String partidoPolitico = this.comboPartido.getSelectedItem().toString();
-        String mensajeCampania = this.areaCampania.getText();
-        String descripcion = this.areaDescripcion.getText();
-
-        ClsCandidato candidato = new ClsCandidato(partidoPolitico, mensajeCampania, descripcion,
-                numeroCedula, nombre, correo, telefono, ciudadOrigen, direccion
-        );
-
-        ClsMensaje mensaje = this.controladorCandidato.actualizarCandidato(candidato);
-
-        if (mensaje.getTipo().equals(ClsMensaje.OK)) {
-            ObtenerCandidatos();
-        }
-
-        JOptionPane.showMessageDialog(rootPane, mensaje.getTexto());
-    }//GEN-LAST:event_botonActualizarActionPerformed
-
-    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-        
-        this.panelPestanias.setSelectedIndex(0);
-
-        int columna = 0;
-        int fila = this.tablaCandidatos.getSelectedRow();
-        String id = this.tablaCandidatos.getValueAt(fila, columna).toString();
-
-        ClsCandidato candidato = this.buscarCandidato(id);
-
-        if (candidato != null) {
-
-            this.campoCedula.setEnabled(false);
-            this.botonAgregar.setVisible(false);
-
-            this.botonActualizar.setVisible(true);
-            this.botonNuevo.setVisible(true);
-
-            this.campoCedula.setText(candidato.getNumeroCedula());
-            this.campoNombre.setText(candidato.getNombre());
-            this.campoCorreo.setText(candidato.getCorreo());
-            this.campoTelefono.setText(candidato.getTelefono());
-            this.comboCiudad.setSelectedItem(candidato.getCiudadOrigen());
-            this.campoDireccion.setText(candidato.getDireccion());
-            this.comboPartido.setSelectedItem(candidato.getPartido());
-            this.areaCampania.setText(candidato.getMensajeCampania());
-            this.areaDescripcion.setText(candidato.getDescripcion());
-
-        }
-    }//GEN-LAST:event_botonEditarActionPerformed
-
-    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        
-        int columna = 0;
-        int fila = this.tablaCandidatos.getSelectedRow();
-        String id = this.tablaCandidatos.getValueAt(fila, columna).toString();
-
-        ClsMensaje mensaje = this.controladorCandidato.eliminarCandidato(id);
-
-        if (mensaje.getTipo().equals(ClsMensaje.OK)) {
-            ObtenerCandidatos();
-        }
-
-        mensaje.mostrarMensaje();
-        
-    }//GEN-LAST:event_botonEliminarActionPerformed
 
     public ClsCandidato buscarCandidato(String idCandidato) {
 
@@ -556,6 +413,148 @@ public class vistaCandidato extends javax.swing.JFrame {
         }
 
     }
+
+
+    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNombreActionPerformed
+
+    private void campoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoCorreoActionPerformed
+
+    private void campoTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTelefonoActionPerformed
+
+    private void comboCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCiudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboCiudadActionPerformed
+
+    private void campoDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoDireccionActionPerformed
+
+    private void comboPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPartidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboPartidoActionPerformed
+
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+
+        String numeroCedula = this.campoCedula.getText();
+        String nombre = this.campoNombre.getText();
+        String correo = this.campoCorreo.getText();
+        String telefono = this.campoTelefono.getText();
+        String ciudadOrigen = this.comboCiudad.getSelectedItem().toString();
+        String direccion = this.campoDireccion.getText();
+        String partidoPolitico = this.comboPartido.getSelectedItem().toString();
+        String mensajeCampania = this.areaCampania.getText();
+        String descripcion = this.areaDescripcion.getText();
+
+        ClsCandidato candidato = new ClsCandidato(partidoPolitico, mensajeCampania, descripcion,
+                numeroCedula, nombre, correo, telefono, ciudadOrigen, direccion
+        );
+
+        ClsMensaje mensaje = this.controladorCandidato.agregarCandidato(candidato);
+
+        if (mensaje.getTipo().equals(ClsMensaje.OK)) {
+            ObtenerCandidatos();
+        }
+
+        JOptionPane.showMessageDialog(rootPane, mensaje.getTexto());
+
+
+    }//GEN-LAST:event_botonAgregarActionPerformed
+
+    private void botonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoActionPerformed
+
+        this.botonAgregar.setVisible(true);
+        this.botonActualizar.setVisible(false);
+        this.botonNuevo.setVisible(false);
+
+        this.campoCedula.setEnabled(true);
+        this.campoCedula.setText("");
+        this.campoNombre.setText("");
+        this.campoCorreo.setText("");
+        this.campoTelefono.setText("");
+        this.campoDireccion.setText("");
+        this.areaCampania.setText("");
+        this.areaDescripcion.setText("");
+
+    }//GEN-LAST:event_botonNuevoActionPerformed
+
+    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
+
+        String numeroCedula = this.campoCedula.getText();
+        String nombre = this.campoNombre.getText();
+        String correo = this.campoCorreo.getText();
+        String telefono = this.campoTelefono.getText();
+        String ciudadOrigen = this.comboCiudad.getSelectedItem().toString();
+        String direccion = this.campoDireccion.getText();
+        String partidoPolitico = this.comboPartido.getSelectedItem().toString();
+        String mensajeCampania = this.areaCampania.getText();
+        String descripcion = this.areaDescripcion.getText();
+
+        ClsCandidato candidato = new ClsCandidato(partidoPolitico, mensajeCampania, descripcion,
+                numeroCedula, nombre, correo, telefono, ciudadOrigen, direccion
+        );
+
+        ClsMensaje mensaje = this.controladorCandidato.actualizarCandidato(candidato);
+
+        if (mensaje.getTipo().equals(ClsMensaje.OK)) {
+            ObtenerCandidatos();
+        }
+
+        JOptionPane.showMessageDialog(rootPane, mensaje.getTexto());
+    }//GEN-LAST:event_botonActualizarActionPerformed
+
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+
+        this.panelPestanias.setSelectedIndex(0);
+
+        int columna = 0;
+        int fila = this.tablaCandidatos.getSelectedRow();
+        String id = this.tablaCandidatos.getValueAt(fila, columna).toString();
+
+        ClsCandidato candidato = this.buscarCandidato(id);
+
+        if (candidato != null) {
+
+            this.campoCedula.setEnabled(false);
+            this.botonAgregar.setVisible(false);
+
+            this.botonActualizar.setVisible(true);
+            this.botonNuevo.setVisible(true);
+
+            this.campoCedula.setText(candidato.getNumeroCedula());
+            this.campoNombre.setText(candidato.getNombre());
+            this.campoCorreo.setText(candidato.getCorreo());
+            this.campoTelefono.setText(candidato.getTelefono());
+            this.comboCiudad.setSelectedItem(candidato.getCiudadOrigen());
+            this.campoDireccion.setText(candidato.getDireccion());
+            this.comboPartido.setSelectedItem(candidato.getPartido());
+            this.areaCampania.setText(candidato.getMensajeCampania());
+            this.areaDescripcion.setText(candidato.getDescripcion());
+
+        }
+    }//GEN-LAST:event_botonEditarActionPerformed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+
+        int columna = 0;
+        int fila = this.tablaCandidatos.getSelectedRow();
+        String id = this.tablaCandidatos.getValueAt(fila, columna).toString();
+
+        ClsMensaje mensaje = this.controladorCandidato.eliminarCandidato(id);
+
+        if (mensaje.getTipo().equals(ClsMensaje.OK)) {
+            ObtenerCandidatos();
+        }
+
+        mensaje.mostrarMensaje();
+
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -583,14 +582,14 @@ public class vistaCandidato extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaCandidato().setVisible(true);
+                new vistaCandidato(null).setVisible(true);
             }
+
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -628,5 +627,4 @@ public class vistaCandidato extends javax.swing.JFrame {
     private javax.swing.JTable tablaCandidatos;
     // End of variables declaration//GEN-END:variables
 
-    
 }
