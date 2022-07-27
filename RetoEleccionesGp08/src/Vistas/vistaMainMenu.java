@@ -125,7 +125,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
     private void botonGestorVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestorVotanteActionPerformed
         
         this.setVisible(false);
-        this.vistaGestorCandidato.setVisible(true);
+        this.vistaCandidato.setVisible(true);
     }//GEN-LAST:event_botonGestorVotanteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
