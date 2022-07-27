@@ -19,7 +19,7 @@ public class MdlEleccion {
     
     public MdlEleccion(){
         this.jdbc = new ClsJdbc();
-        this.jdbc.CrearConnexion();
+        this.jdbc.CrearConexion();
     }
     
     public ClsMensaje agregarEleccion (ClsEleccion eleccion){

@@ -16,7 +16,7 @@ public class CtlCandidato {
 
     public CtlCandidato() {
         
-        this.modeloCandidato = new MdlCandidato();
+       this.modeloCandidato = new MdlCandidato();
     }
 
     public LinkedList<ClsCandidato> ObtenerCandidatos() {

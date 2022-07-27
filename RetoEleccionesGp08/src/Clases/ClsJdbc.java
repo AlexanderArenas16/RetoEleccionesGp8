@@ -16,7 +16,7 @@ public class ClsJdbc {
     
     public Connection conexion;
     
-    public void CrearConnexion() {
+    public void CrearConexion() {
         try {
             Class.forName(driver);
             this.conexion =  DriverManager.getConnection(url, usuario, contrasenia);
@@ -29,8 +29,6 @@ public class ClsJdbc {
         } 
     }
 
-    public void CrearConexion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
 }
 
