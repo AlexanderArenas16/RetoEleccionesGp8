@@ -4,9 +4,7 @@ package Clases;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/*
- * @author arena
- */
+
 public class ClsJdbc {
     
     String driver = "com.mysql.cj.jdbc.Driver";
@@ -29,5 +27,7 @@ public class ClsJdbc {
             System.out.println("Ocuriro error en la conexión " + error.getMessage());
         } 
     }
+
+   
 }
 

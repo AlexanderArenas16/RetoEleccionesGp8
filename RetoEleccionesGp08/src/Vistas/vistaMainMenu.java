@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package Vistas;
 
 /**
@@ -6,7 +10,7 @@ package Vistas;
  */
 public class vistaMainMenu extends javax.swing.JFrame {
 
-    vistaCandidato vistaGestorCandidato;
+    vistaCandidato vistaCandidato;
 
     /**
      * Creates new form vistaMainMenu
@@ -14,7 +18,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
     public vistaMainMenu() {
         initComponents();
 
-        this.vistaGestorCandidato = new vistaCandidato(this);
+        this.vistaCandidato = new vistaCandidato(this);
 
     }
 
@@ -113,9 +117,9 @@ public class vistaMainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonGestorCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestorCandidatoActionPerformed
-        
+
         this.setVisible(false);
-        this.vistaGestorCandidato.setVisible(true);
+        this.vistaCandidato.setVisible(true);
     }//GEN-LAST:event_botonGestorCandidatoActionPerformed
 
     private void botonGestorVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestorVotanteActionPerformed
@@ -128,15 +132,16 @@ public class vistaMainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void ButtonCandidateManagerActionPerformed(java.awt.event.ActionEvent evt) {
+    /** private void ButtonCandidateManagerActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
 
         this.vistaGestorCandidato.setVisible(true);
+        
     }
-
-    /**
-     * @param args the command line arguments
-     */
+    * */
+        /**
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -165,6 +170,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new vistaMainMenu().setVisible(true);
+               
             }
         });
     }
