@@ -7,6 +7,7 @@ package Vistas;
 import Clases.*;
 import Controladores.CtlVotante;
 import java.util.LinkedList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,13 +17,23 @@ import javax.swing.table.DefaultTableModel;
  */
 public class vistaVotante extends javax.swing.JFrame {
 
+    JFrame menuPrincipal;
     CtlVotante controladorVotante;
+    LinkedList<ClsVotante> listaVotantes;
+
     /**
      * Creates new form vistaVotante
      */
-    public vistaVotante() {
+    public vistaVotante(JFrame menuPrincipal) {
         this.controladorVotante = new CtlVotante();
         initComponents();
+        this.botonNuevoVotante.setVisible(false);
+        this.botonActualizarVotante.setVisible(false);
+
+        if (menuPrincipal != null) {
+            this.menuPrincipal = menuPrincipal;
+        }
+
         this.obtenerVotantes();
     }
 
@@ -57,6 +68,8 @@ public class vistaVotante extends javax.swing.JFrame {
         botonAgregarVotante = new javax.swing.JButton();
         botonLimpiarCamposVotante = new javax.swing.JButton();
         botonActualizarVotante = new javax.swing.JButton();
+        botonNuevoVotante = new javax.swing.JButton();
+        botonVolver = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,6 +189,18 @@ public class vistaVotante extends javax.swing.JFrame {
         });
 
         botonActualizarVotante.setText("Actualizar");
+        botonActualizarVotante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActualizarVotanteActionPerformed(evt);
+            }
+        });
+
+        botonNuevoVotante.setText("Nuevo");
+        botonNuevoVotante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonNuevoVotanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -203,7 +228,9 @@ public class vistaVotante extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(botonAgregarVotante)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonNuevoVotante)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addComponent(botonLimpiarCamposVotante)
                         .addGap(7, 7, 7)
                         .addComponent(botonActualizarVotante)))
@@ -236,11 +263,19 @@ public class vistaVotante extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAgregarVotante)
                     .addComponent(botonLimpiarCamposVotante)
-                    .addComponent(botonActualizarVotante))
+                    .addComponent(botonActualizarVotante)
+                    .addComponent(botonNuevoVotante))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
         panelListaVotante.addTab("Agregar Votante", jPanel3);
+
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -248,13 +283,19 @@ public class vistaVotante extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelListaVotante)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelListaVotante)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(botonVolver)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelListaVotante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -274,15 +315,15 @@ public class vistaVotante extends javax.swing.JFrame {
         String nombre = this.campoNombreVotante.getText();
         String telefono = this.campoTelefonoVotante.getText();
         String tipoDocumento = "C.C";
-        
+
         ClsVotante votante = new ClsVotante(correo, tipoDocumento, cedula, nombre, telefono, direccion);
-        
+
         ClsMensaje mensaje = this.controladorVotante.agregarVotante(votante);
-        
-        if(mensaje.getTipo().equals(ClsMensaje.OK)){
+
+        if (mensaje.getTipo().equals(ClsMensaje.OK)) {
             this.obtenerVotantes();
             this.limpiarCampos();
-            JOptionPane.showMessageDialog(rootPane, mensaje.getTexto()); 
+            JOptionPane.showMessageDialog(rootPane, mensaje.getTexto());
         }
 
 
@@ -298,40 +339,107 @@ public class vistaVotante extends javax.swing.JFrame {
     }//GEN-LAST:event_botonEliminarVotanteActionPerformed
 
     private void botonEliminarVotantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarVotantesActionPerformed
-        
+
         int columna = 0;
         int fila = this.tablaVotante.getSelectedRow();
-        
+
         String id = this.tablaVotante.getValueAt(fila, columna).toString();
-        
+
         ClsMensaje mensaje = this.controladorVotante.eliminarVotante(id);
-        
-        if(mensaje.getTipo().equals(ClsMensaje.OK)){
+
+        if (mensaje.getTipo().equals(ClsMensaje.OK)) {
             this.obtenerVotantes();
-            JOptionPane.showMessageDialog(rootPane, mensaje.getTexto()); 
+            JOptionPane.showMessageDialog(rootPane, mensaje.getTexto());
         }
     }//GEN-LAST:event_botonEliminarVotantesActionPerformed
 
     private void botonEditarVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarVotanteActionPerformed
-        // TODO add your handling code here:
+
+        int columna = 0;
+        int fila = this.tablaVotante.getSelectedRow();
+        String id = this.tablaVotante.getValueAt(fila, columna).toString();
+
+        ClsVotante votanteSeleccionado = this.buscarVotante(id);
+
+        if (votanteSeleccionado != null) {
+            this.campoCedulaVotante.setText(votanteSeleccionado.getNumeroDocumento());
+            this.campoCorreoVotante.setText(votanteSeleccionado.getCorreoElectronico());
+            this.campoDireccionVotante.setText(votanteSeleccionado.getDireccion());
+            this.campoNombreVotante.setText(votanteSeleccionado.getNombre());
+            this.campoTelefonoVotante.setText(votanteSeleccionado.getTelefono());
+        }
+        
+        this.campoCedulaVotante.setEnabled(false);
+        this.botonLimpiarCamposVotante.setVisible(false);
+        this.botonAgregarVotante.setVisible(false);
+        this.botonNuevoVotante.setVisible(true);
+        this.botonActualizarVotante.setVisible(true);
+        this.panelListaVotante.setSelectedIndex(1);
+
     }//GEN-LAST:event_botonEditarVotanteActionPerformed
 
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+
+        this.setVisible(false);
+        this.menuPrincipal.setVisible(true);
+    }//GEN-LAST:event_botonVolverActionPerformed
+
+    private void botonActualizarVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarVotanteActionPerformed
+
+        String cedula = this.campoCedulaVotante.getText();
+        String correo = this.campoCorreoVotante.getText();
+        String direccion = this.campoDireccionVotante.getText();
+        String nombre = this.campoNombreVotante.getText();
+        String telefono = this.campoTelefonoVotante.getText();
+        String tipoDocumento = "C.C";
+
+        ClsVotante votante = new ClsVotante(correo, tipoDocumento, cedula, nombre, telefono, direccion);
+
+        ClsMensaje mensaje = this.controladorVotante.actualizarVotante(votante);
+
+        if (mensaje.getTipo().equals(ClsMensaje.OK)) {
+            this.obtenerVotantes();
+            this.limpiarCampos();
+            JOptionPane.showMessageDialog(rootPane, mensaje.getTexto());
+            this.panelListaVotante.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_botonActualizarVotanteActionPerformed
+
+    private void botonNuevoVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoVotanteActionPerformed
+        this.campoCedulaVotante.setEnabled(true);
+        this.limpiarCampos();
+        this.botonAgregarVotante.setVisible(true);
+        this.botonNuevoVotante.setVisible(false);
+        this.botonActualizarVotante.setVisible(false);
+        this.botonLimpiarCamposVotante.setVisible(true);
+    }//GEN-LAST:event_botonNuevoVotanteActionPerformed
+
     public void obtenerVotantes() {
-        LinkedList<ClsVotante> listaVotantes = this.controladorVotante.obtenerVotante();
-        this.actualizarTabla(listaVotantes);
+        this.listaVotantes = this.controladorVotante.obtenerVotante();
+        this.actualizarTabla(this.listaVotantes);
     }
-    
-    public void actualizarTabla(LinkedList<ClsVotante> votantes){
+
+    public ClsVotante buscarVotante(String id_votante) {
+
+        for (ClsVotante v : this.listaVotantes) {
+            if (id_votante.equals(v.getNumeroDocumento())) {
+                return v;
+            }
+        }
+        return null;
+    }
+
+    public void actualizarTabla(LinkedList<ClsVotante> votantes) {
         DefaultTableModel modelo = (DefaultTableModel) this.tablaVotante.getModel();
         modelo.setRowCount(0);
-        
-        for(ClsVotante v : votantes) {
-            Object[] fila = { v.getNumeroDocumento(), v.getNombre(), v.getTelefono(), v.getCorreoElectronico() };
-            
+
+        for (ClsVotante v : votantes) {
+            Object[] fila = {v.getNumeroDocumento(), v.getNombre(), v.getTelefono(), v.getCorreoElectronico()};
+
             modelo.addRow(fila);
         }
     }
-    
+
     public void limpiarCampos() {
         this.campoCedulaVotante.setText("");
         this.campoCorreoVotante.setText("");
@@ -339,7 +447,7 @@ public class vistaVotante extends javax.swing.JFrame {
         this.campoNombreVotante.setText("");
         this.campoTelefonoVotante.setText("");
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -370,7 +478,7 @@ public class vistaVotante extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaVotante().setVisible(true);
+                new vistaVotante(null).setVisible(true);
             }
         });
     }
@@ -382,6 +490,8 @@ public class vistaVotante extends javax.swing.JFrame {
     private javax.swing.JButton botonEliminarVotante;
     private javax.swing.JButton botonEliminarVotantes;
     private javax.swing.JButton botonLimpiarCamposVotante;
+    private javax.swing.JButton botonNuevoVotante;
+    private javax.swing.JButton botonVolver;
     private javax.swing.JTextField campoCedulaVotante;
     private javax.swing.JTextField campoCorreoVotante;
     private javax.swing.JTextField campoDireccionVotante;
