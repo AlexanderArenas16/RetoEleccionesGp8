@@ -13,6 +13,8 @@ public class vistaMainMenu extends javax.swing.JFrame {
     vistaCandidato vistaCandidato;
     
     vistaVotante vistaVotante;
+    
+    vistaGestorElecciones vistaElecciones;
 
     /**
      * Creates new form vistaMainMenu
@@ -22,7 +24,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
 
         this.vistaCandidato = new vistaCandidato(this);
         this.vistaVotante = new vistaVotante(this);
-
+        this.vistaElecciones = new vistaGestorElecciones(this);
     }
 
     /**
@@ -39,6 +41,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
         botonGestorCandidato = new javax.swing.JButton();
         botonGestorVotante = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        botonGestorElecciones = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +69,13 @@ public class vistaMainMenu extends javax.swing.JFrame {
             }
         });
 
+        botonGestorElecciones.setText("Gestor Elecciones");
+        botonGestorElecciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGestorEleccionesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -73,22 +83,25 @@ public class vistaMainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(150, 150, 150)
                 .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(botonGestorCandidato)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(botonGestorVotante)
-                .addGap(45, 45, 45))
+                .addContainerGap(149, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonGestorCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(botonGestorVotante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonGestorElecciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(117, 117, 117))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonGestorCandidato)
-                    .addComponent(botonGestorVotante))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(botonGestorCandidato)
+                .addGap(18, 18, 18)
+                .addComponent(botonGestorVotante)
+                .addGap(18, 18, 18)
+                .addComponent(botonGestorElecciones)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(48, 48, 48))
         );
@@ -100,7 +113,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -134,6 +147,12 @@ public class vistaMainMenu extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void botonGestorEleccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestorEleccionesActionPerformed
+        
+        this.setVisible(false);
+        this.vistaElecciones.setVisible(true);
+    }//GEN-LAST:event_botonGestorEleccionesActionPerformed
 
     /** private void ButtonCandidateManagerActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -180,6 +199,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGestorCandidato;
+    private javax.swing.JButton botonGestorElecciones;
     private javax.swing.JButton botonGestorVotante;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
