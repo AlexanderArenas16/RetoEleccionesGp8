@@ -58,17 +58,18 @@ public class MdlCandidato {
         ClsMensaje mensaje;
 
         try {
-            String sql = "INSERT INTO tbl_candidatos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tbl_candidatos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement sentencia = this.jdbc.conexion.prepareStatement(sql);
             sentencia.setString(1, candidato.getNumeroCedula());
             sentencia.setString(2, candidato.getNombre());
             sentencia.setString(3, candidato.getCorreo());
             sentencia.setString(4, candidato.getTelefono());
-            sentencia.setString(5, candidato.getDireccion());
-            sentencia.setString(6, candidato.getPartido());
-            sentencia.setString(7, candidato.getMensajeCampania());
-            sentencia.setString(8, candidato.getDescripcion());
-            sentencia.setString(9, candidato.getCiudadOrigen());
+            sentencia.setString(5, candidato.getCiudadOrigen());
+            sentencia.setString(6, candidato.getDireccion());
+            sentencia.setString(7, candidato.getPartido());
+            sentencia.setString(8, candidato.getMensajeCampania());
+            sentencia.setString(9, candidato.getDescripcion());
+            sentencia.setString(10, "Aqui irian las propuestas");
 
             int resultado = sentencia.executeUpdate();
 
