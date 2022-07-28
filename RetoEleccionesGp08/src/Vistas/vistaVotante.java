@@ -287,7 +287,7 @@ public class vistaVotante extends javax.swing.JFrame {
                     .addComponent(panelListaVotante)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonVolver)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

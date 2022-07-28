@@ -5,7 +5,7 @@
 package retoeleccionesgp08;
 
 import Clases.ClsJdbc;
-import Vistas.vistaGestorElecciones;
+import Vistas.*;
 
 /**
  *
@@ -21,8 +21,10 @@ public class RetoEleccionesGp08 {
         ClsJdbc jdbc = new ClsJdbc();
         jdbc.CrearConexion();
         
-        vistaGestorElecciones vista = new vistaGestorElecciones();
-        vista.setVisible(true);
+        vistaMainMenu vistaInicial = new vistaMainMenu();
+        vistaInicial.setVisible(true);
+//        vistaGestorElecciones vista = new vistaGestorElecciones();
+//        vista.setVisible(true);
         
     }
     
