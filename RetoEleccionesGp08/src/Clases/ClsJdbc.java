@@ -10,12 +10,12 @@ public class ClsJdbc {
     String driver = "com.mysql.cj.jdbc.Driver";
     String usuario = "root";
     String contrasenia = "";
-    String bd = "bd_elecciones";
+    String bd = "bd_elecciones"; //Cambiar nombre de base de datos --> Felipe
     String url = "jdbc:mysql://localhost:3306/" + this.bd;
     
     public Connection conexion;
     
-    public void CrearConexion() {
+    public void CrearConexion(){ 
         try {
             Class.forName(driver);
             this.conexion =  DriverManager.getConnection(url, usuario, contrasenia);

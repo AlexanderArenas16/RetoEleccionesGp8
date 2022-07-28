@@ -15,6 +15,8 @@ public class ClsEleccion {
     private String fechaInicio;
     private String fechaFin;
     private String categoria;
+    private String estado;
+ 
 
     public ClsEleccion(String idEleccion, String descripcion, String fechaInicio, String fechaFin, String categoria) {
         this.idEleccion = idEleccion;
@@ -62,6 +64,14 @@ public class ClsEleccion {
 
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+    
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     
