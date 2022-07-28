@@ -11,6 +11,8 @@ package Vistas;
 public class vistaMainMenu extends javax.swing.JFrame {
 
     vistaCandidato vistaCandidato;
+    
+    vistaVotante vistaVotante;
 
     /**
      * Creates new form vistaMainMenu
@@ -19,6 +21,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
         initComponents();
 
         this.vistaCandidato = new vistaCandidato(this);
+        this.vistaVotante = new vistaVotante(this);
 
     }
 
@@ -125,7 +128,7 @@ public class vistaMainMenu extends javax.swing.JFrame {
     private void botonGestorVotanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestorVotanteActionPerformed
         
         this.setVisible(false);
-        this.vistaCandidato.setVisible(true);
+        this.vistaVotante.setVisible(true);
     }//GEN-LAST:event_botonGestorVotanteActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
